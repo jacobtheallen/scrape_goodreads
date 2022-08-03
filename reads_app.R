@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------
-# Title: reads_dash.R
+# Title: reads_app.R
 # Purpose: Create shiny dashboard based on data from reads_scrape.R
 # Author: Jacob Allen
 # Created: May 30, 2022
