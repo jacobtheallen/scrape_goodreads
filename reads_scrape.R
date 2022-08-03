@@ -26,6 +26,7 @@ library(lubridate)
 library(stringi)
 
 # Scrape book data from Goodreads overview page ---------------------------
+
 home_url1 <- "https://www.goodreads.com/review/list/109079834-jacob-allen?order=d" # replace URL
 home_url2 <- "&ref=nav_mybooks&shelf=read&sort=date_started&utf8=%E2%9C%93&per_page=20"
 
@@ -205,6 +206,7 @@ book1 <- c(1:gr_page_ct) %>%
   map_dfr(get_book_data)
 
 # Transform dataframe -----------------------------------------------------
+
 book1 <- book1 %>%   
   mutate(author_query = gsub(" ", "+", author),
          author_query = gsub(",", "", author_query),
@@ -295,6 +297,7 @@ book <- book1 %>% left_join(
 )
 
 # Scrape and transform author data from WikiData --------------------------
+
 get_author_data <- function(x) {
   search_url <- str_c("https://www.wikidata.org/w/api.php?action=query&list=search&format=json&srsearch=", x)
   cat(x, "\n")
@@ -341,20 +344,21 @@ get_author_data <- function(x) {
 }
 
 # Get distinct list of authors
+
 author_list <- as.vector((unique(book$author_query)))
 
 # Apply function to author list and save output as dataframe
+
 author <- map_dfr(author_list, get_author_data)
 
-# Merge and clean author and book data ------------------------------------
+# Join author data to book data -------------------------------------------
 
-# Join author data to book data
 reads <- book %>% 
   left_join(author,
             by = "author_query")
 
-
 # Handling re-reads -------------------------------------------------------
+
 read_2x <- reads %>%
   filter(read_ct == 2 | read_ct == 3) %>%  
   mutate(
