@@ -196,7 +196,6 @@ server <- function(input, output, session) {
     
     # Avg days to read
     days <- final %>% 
-        filter(date_finish > "2015-01-01") %>% 
         group_by(date_finish_yr) %>% 
         summarize(avg_days_to_read = round(mean(days_to_read), 0))
         
@@ -291,7 +290,6 @@ server <- function(input, output, session) {
     
     # Books read by month
     month_ct <- final %>% 
-        filter(date_finish > "2015-01-01") %>% 
         group_by(date_finish_month) %>% 
         summarize(n = n())
     
@@ -309,7 +307,6 @@ server <- function(input, output, session) {
     
     # Pages read by month
     month_pgs <- final %>% 
-        filter(date_finish > "2015-01-01") %>% 
         group_by(date_finish_month) %>% 
         summarize(n = sum(pages))
     
@@ -366,7 +363,6 @@ server <- function(input, output, session) {
     
     # Cumulative book read count by month
     read_cuml <- final %>% 
-        filter(date_finish > "2015-01-01") %>% 
         group_by(date_finish_yr, date_finish_month) %>% 
         summarize(n = n()) %>% 
         mutate(cuml = cumsum(n))
@@ -382,7 +378,6 @@ server <- function(input, output, session) {
     
     # Cumulative book page read count by month
     pgs_cuml <- final %>% 
-        filter(date_finish > "2015-01-01") %>% 
         group_by(date_finish_yr, date_finish_month) %>% 
         summarize(sum = sum(pages)) %>% 
         mutate(cuml = cumsum(sum))
