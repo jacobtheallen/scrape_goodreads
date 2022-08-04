@@ -8,18 +8,22 @@
 
 # Install and load packages -----------------------------------------------
 
-# install.packages("shiny")
+# install.packages("dplyr")
+# install.packages("lubridate")
 # install.packages("shinythemes")
-# install.packages("shinydashboard")
 # install.packages("thematic")
-# install.packages("ggplot2")
+# install.packages("shinydashboard")
+# install.packages("plotly")
 # install.packages("gghighlight")
 # install.packages("ggrepel")
 
+library(dplyr)
+library(lubridate)
 library(shiny)
 library(shinythemes)
 library(shinydashboard)
 library(thematic)
+library(plotly)
 library(ggplot2)
 library(gghighlight)
 library(ggrepel)
