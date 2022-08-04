@@ -8,10 +8,11 @@
 
 # Install and load packages -----------------------------------------------
 
+# install.packages("shiny")
 # install.packages("shinythemes")
-# install.packages("thematic")
 # install.packages("shinydashboard")
-# install.packages("plotly")
+# install.packages("thematic")
+# install.packages("ggplot2")
 # install.packages("gghighlight")
 # install.packages("ggrepel")
 
@@ -19,7 +20,6 @@ library(shiny)
 library(shinythemes)
 library(shinydashboard)
 library(thematic)
-library(plotly)
 library(ggplot2)
 library(gghighlight)
 library(ggrepel)
